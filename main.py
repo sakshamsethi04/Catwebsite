@@ -1,9 +1,9 @@
 from fastapi import FastAPI,Request
-from models import User,user_response,Base
+from models import User,user_response,Base,UserTable
 from database import engine
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-
+from database import SessionLocal
 Base.metadata.create_all(bind=engine)
 app=FastAPI()
 templates=Jinja2Templates(directory="templates")
@@ -16,12 +16,17 @@ def homepage(request:Request):
     )
 @app.post("/signup", response_model=user_response)
 def signup(user:User):
-    return{
-        "id":1,
-        "name":user.name,
-        "age":user.age,
-        "password":"12356"
-    }
+    db=SessionLocal()
+    db_user=UserTable(
+        name=user.name,
+        age=user.age,
+        password=user.password
+    )
+    db.add(db_user)
+    db.commit()
+    db.refresh(db_user)
+    db.close()
+    return db_user
 @app.get("/submit")
 def submit():
     print("button clicked!")

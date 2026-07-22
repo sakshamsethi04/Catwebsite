@@ -4,17 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>fastapiwebsite</title>
-<link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-    <h3 id="heading">fast api website</h3>
-    <label for="name">name</label>
-    <input type="text" id="name" minlength="3" maxlength="20"><br>
-    <label for="age">age</label>
-    <input type="text" id="age" min="0" max="100"><br>
-    <label for="password">Password</label>
-    <input type="password" id="password" minlength="10"><br>
-    <input type="button" value="Submit" id="submit">
+    <div id="inputdiv">
+        <img src="logo.png" id="logo"><br>
+        <h1 id="heading">Sign Up</h1>
+    <label for="name" class="label">Username</label><br>
+    <input type="text" id="name" minlength="3" maxlength="20" class="inputbox" 
+    placeholder="Enter Your Username Here""><br>
+    <label for="email" class="label">Email</label><br>
+    <input type="email" id="email" min="0" max="100" class="inputbox"
+    placeholder="example@gmail.com" required><br>
+    <label for="password" class="label">Password</label><br>
+    <input type="text" id="password" minlength="10" class="inputbox"
+    placeholder="Enter Password" required><br>
+    <label for="confirmpassword">Confrim Password</label><br>
+    <input type="password" id="confirmpassword" class="inputbox"
+    placeholder="Confirm Password" required> <br>
+    <br><input type="button" value="Submit" id="submit">
+    </div>
     <script src="/static/script.js"></script>
 </body>
 </html>
