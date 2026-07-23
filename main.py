@@ -9,7 +9,7 @@ app=FastAPI()
 templates=Jinja2Templates(directory="templates")
 app.mount("/static",StaticFiles(directory="static"), name ="static")
 @app.get("/")
-def homepage(request:Request):
+def signuppage(request:Request):
     return templates.TemplateResponse(
         request=request,
         name="index.html"
@@ -19,7 +19,7 @@ def signup(user:User):
     db=SessionLocal()
     db_user=UserTable(
         name=user.name,
-        age=user.age,
+        email=user.email,
         password=user.password
     )
     db.add(db_user)
@@ -33,3 +33,27 @@ def submit():
     return{
         "message":"user data submitted successfully"
     }
+@app.get("/home")
+def homepage(my_request:Request):
+    return templates.TemplateResponse(
+        request=my_request,
+        name="homepage.html"
+    )
+@app.get("/adoptacat")
+def adoptacat(my_request:Request):
+    return templates.TemplateResponse(
+        request=my_request,
+        name="adoptacat.html"
+    )
+@app.get("/catstagram")
+def catstagram(my_request:Request):
+    return templates.TemplateResponse(
+        request=my_request,
+        name="catstagram.html"
+    )
+@app.get("/postpetforadoption")
+def postpetforadoption(my_request:Request):
+    return templates.TemplateResponse(
+            request=my_request,
+            name="postcatforadoption.html"
+        )

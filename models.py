@@ -6,13 +6,13 @@ class UserTable(Base):
     __tablename__ ="users"
     id=Column(Integer,primary_key=True)
     name=Column(String)
-    age=Column(Integer)
+    email=Column(String)
     password=Column(String)
 class user_response(BaseModel):
     id:int
     name:str
-    age:int
+    email:str
 class User(BaseModel):
     name:str
-    age:int
+    email:str
     password:str
